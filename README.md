@@ -27,7 +27,7 @@ The accuracy compared to [Naegleria's spreadsheet](https://docs.google.com/sprea
  <dt><code>std</code>: numeric</dt>
   <dd>Standard deviation of gaussian window for moving average.</dd>
  <dt><code>rng</code>: numeric</dt>
-  <dd>Values farther than <code>std*range</code> will not be used for moving average.</dd>
+  <dd>Values farther than <code>std*rng</code> will not be used for moving average.</dd>
  <dt>returns: (float, float)</dt>
   <dd>Returns the tuple of (MT point [km/h], Acceleration at MT point [km/h/f]).</dd>
 </dl>
@@ -42,7 +42,7 @@ mtp('./sample/sa70_on.txt', './sample/sa70_off.txt') #=> (1224.330134264905, -2.
 
 The input speed data files are assumed to be created by [my AviUtl plugin](https://github.com/cycloawaodorin/fzgx_smr_ks).
 The files should include frame numbers and separators should be spaces (default settings of the plugin).
-'./sample/sa70_on.txt' and './sample/sa70_off.txt' are samples for input files (data for Space Angler at 70%).
+'./sample/sa70_on.txt' and './sample/sa70_off.txt' are sample input files, which are data of Space Angler at 70%.
 
 ## Contributing
 
