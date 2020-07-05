@@ -12,7 +12,7 @@ setuptools.setup(
 	author_email = 'cycloawaodorin+pypi@gmail.com',
 	maintainer = 'KAZOON',
 	maintainer_email = 'cycloawaodorin+pypi@gmail.com',
-	description = 'A Python package for speed-based calculation of F-ZERO GX.'
+	description = 'A Python package for speed-based calculation of F-ZERO GX.',
 	long_description = long_description,
 	long_description_content_type = 'text/markdown',
 	packages = setuptools.find_packages(),
