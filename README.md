@@ -4,8 +4,8 @@ This is a Python package for speed-based calculation of F-ZERO GX.
 
 ## Requirements
 
-This package requires numpy and pandas.
-Also, speed data files created by [my AviUtl plugin](https://github.com/cycloawaodorin/fzgx_smr_ks) is required as input.
+This package requires pandas.
+Also, speed data files created by [my AviUtl plugin](https://github.com/cycloawaodorin/fzgx_smr_ks) are required as input.
 
 ## Installation
 

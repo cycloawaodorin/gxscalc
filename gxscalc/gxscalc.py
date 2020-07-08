@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 
 def _mmean(df, s, r):
