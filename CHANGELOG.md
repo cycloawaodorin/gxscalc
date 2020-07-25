@@ -5,3 +5,4 @@
 
 ## 0.0.2
 - Remove numpy from requirements.
+- Add gxscalc.distance().
