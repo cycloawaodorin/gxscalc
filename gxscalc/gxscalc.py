@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 
 def _mmean(df, s, r):
@@ -52,3 +51,16 @@ def calc(accel, boost, on, off, *, duration_threshold=4):
 	b4 = b[:241]['speed'].max()
 	b10 = b['speed'].max()
 	return (top, a800, mtp, decel, b1, bd, b1300, b4, b10)
+
+def _distance(df, fps):
+	ret = 0
+	sp = df['speed'].iat[0]/3.6
+	for i in range(len(df)-1):
+		sp2 = df['speed'].iat[i+1]/3.6
+		ret += (sp+sp2)/(fps*2)
+		sp = sp2
+	return ret
+
+def distance(file, fps=60):
+	df = pd.read_csv(file, sep='\s+', names=['frame', 'speed'])
+	return _distance(df, fps)

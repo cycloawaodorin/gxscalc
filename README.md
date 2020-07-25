@@ -4,8 +4,8 @@ This is a Python package for speed-based calculation of F-ZERO GX.
 
 ## Requirements
 
-This package requires numpy and pandas.
-Also, speed data files created by [my AviUtl plugin](https://github.com/cycloawaodorin/fzgx_smr_ks) is required as input.
+This package requires pandas.
+Also, speed data files created by [my AviUtl plugin](https://github.com/cycloawaodorin/fzgx_smr_ks) are required as input.
 
 ## Installation
 
@@ -37,6 +37,21 @@ The accuracy compared to [Naegleria's spreadsheet](https://docs.google.com/sprea
  <dt>returns: (float, float)</dt>
   <dd>Returns the tuple of (MT point [km/h], Acceleration at MT point [km/h/f]).</dd>
 </dl>
+
+### `gxscalc.distance(file, fps=60)`
+Calculate the approximated travelled distance of given speed data file via trapezoidal rule.
+The unit of input speed is km/h and the unit of output length is m.
+Note that, frames per real-second is 59.94 (except PAL version), but frames per in-game-second is 60.
+
+<dl>
+ <dt><code>file</code>: str</dt>
+  <dd>File path of speed data to be calculated.</dd>
+ <dt><code>fps</code>: numeric</dt>
+  <dd>The reciprocal of time between the adjacent speed values, in seconds.</dd>
+ <dt>returns: float</dt>
+  <dd>Returns the travelled distance in meter.</dd>
+</dl>
+
 
 ## Notice
 
