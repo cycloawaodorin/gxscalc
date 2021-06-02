@@ -11,7 +11,7 @@ Also, speed data files created by [my AviUtl plugin](https://github.com/cycloawa
 
 Gxscalc is available on PyPI:
 
-    $ pip install gxscalc
+    $ python -m pip install gxscalc
 
 ## Usage
 
