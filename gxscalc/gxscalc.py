@@ -1,9 +1,11 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+plt.rcParams['axes.axisbelow'] = True
 
 def _mmean(df, s, r):
 	return df.rolling(s*r+1, center=True, win_type='gaussian', min_periods=1).mean(std=s)
 
-def _cross(on, off, *, std=5, rng=10):
+def _cross(on, off, *, std=5, rng=10, rf=False):
 	x = on[:-1].reset_index()['speed']
 	y = _mmean(on[1:].reset_index()['speed']-x, std, rng)
 	df1 = pd.DataFrame({'speed': x, 'accel': y})
@@ -26,17 +28,26 @@ def _cross(on, off, *, std=5, rng=10):
 			bet1 = (x1b*y1a-x1a*y1b)/(x1b-x1a)
 			spd = (bet1-bet0)/(alp0-alp1)
 			acl = (alp0*bet1-alp1*bet0)/(alp0-alp1)
-			return (spd, acl)
+			if rf:
+				fig = plt.figure()
+				ax = fig.add_subplot(xlabel='Speed [km/h]', ylabel='Acceleration [km/h/f]')
+				ax.plot(df0['speed'], df0['accel'], label='on')
+				ax.plot(df1['speed'], df1['accel'], label='off')
+				ax.grid()
+				ax.legend()
+				return (spd, acl, fig, ax)
+			else:
+				return (spd, acl)
 
 def _b1bd(b, th):
 	for i in range(len(b)-1):
 		if (b['speed'].iat[i] - b['speed'].iat[i+1]) > th:
 			return (b['speed'].iat[i], i)
 
-def mtp(on, off, *, std=5, rng=10):
+def mtp(on, off, *, std=5, rng=10, return_figure=False):
 	on = pd.read_csv(on, sep='\s+', names=['frame', 'speed'])
 	off = pd.read_csv(off, sep='\s+', names=['frame', 'speed'])
-	return _cross(on, off, std=std, rng=rng)
+	return _cross(on, off, std=std, rng=rng, rf=return_figure)
 
 def calc(accel, boost, on, off, *, duration_threshold=4):
 	a = pd.read_csv(accel, sep='\s+', names=['frame', 'speed'])

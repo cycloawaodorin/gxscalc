@@ -6,3 +6,6 @@
 ## 0.0.2 26.Jul.2020
 - Remove numpy from requirements.
 - Add gxscalc.distance().
+
+## 0.0.3 26.Jun.2021
+- Add keyword argument `return_figure` into gxscalc.mtp().

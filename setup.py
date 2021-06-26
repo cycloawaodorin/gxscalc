@@ -1,6 +1,6 @@
 import setuptools
 
-version = '0.0.2'
+version = '0.0.3'
 with open('README.md', 'r') as f:
 	long_description = f.read()
 
@@ -16,7 +16,7 @@ setuptools.setup(
 	long_description = long_description,
 	long_description_content_type = 'text/markdown',
 	packages = setuptools.find_packages(),
-	install_requires = ['pandas'],
+	install_requires = ['pandas', 'matplotlib'],
 	classifiers = [
 		"Programming Language :: Python :: 3",
 		"License :: OSI Approved :: MIT License",
