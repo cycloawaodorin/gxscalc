@@ -4,14 +4,14 @@ This is a Python package for speed-based calculation of F-ZERO GX.
 
 ## Requirements
 
-This package requires pandas.
+This package requires pandas and matplotlib.
 Also, speed data files created by [my AviUtl plugin](https://github.com/cycloawaodorin/fzgx_smr_ks) are required as input.
 
 ## Installation
 
 Gxscalc is available on PyPI:
 
-    $ pip install gxscalc
+    $ python -m pip install gxscalc
 
 ## Usage
 
@@ -21,7 +21,7 @@ from gxscalc import mtp
 mtp('./sample/sa70_on.txt', './sample/sa70_off.txt') #=> (1224.330134264905, -2.4656191600475066)
 ```
 
-### `gxscalc.mtp(on, off, *, std=5, rng=10)`
+### `gxscalc.mtp(on, off, *, std=5, rng=10, return_dataframes=False)`
 Calculate the approximated MT point from two speed data files of deceleration.
 The accuracy compared to [Naegleria's spreadsheet](https://docs.google.com/spreadsheets/d/1kyl0kAi_-NaM9RCPIwThixogTYESL4zdpmbbH_qDlmI/edit#gid=0) is within about 3 km/h.
 
@@ -34,14 +34,15 @@ The accuracy compared to [Naegleria's spreadsheet](https://docs.google.com/sprea
   <dd>Standard deviation of gaussian window for moving average.</dd>
  <dt><code>rng</code>: numeric</dt>
   <dd>Values farther than <code>std*rng</code> will not be used for moving average.</dd>
- <dt>returns: (float, float)</dt>
-  <dd>Returns the tuple of (MT point [km/h], Acceleration at MT point [km/h/f]).</dd>
+ <dt><code>return_figure</code>: boolean</dt>
+  <dd>If this is true, mtp() returns figure of speed vs moving averaged acceleration graph as optional output.</dd>
+ <dt>returns: (float, float, [matplotlib.figure.Figure, matplotlib.axes.Axes])</dt>
+  <dd>Returns the tuple of (MT point [km/h], Acceleration at MT point [km/h/f]). If <code>return_dataframes</code> is <code>True</code>, returns (MT point, Acceleration at MT point, <code>Figure</code> of the graph, <code>Axes</code> of the graph) instead.</dd>
 </dl>
 
 ### `gxscalc.distance(file, fps=60)`
 Calculate the approximated travelled distance of given speed data file via trapezoidal rule.
 The unit of input speed is km/h and the unit of output length is m.
-Note that, frames per real-second is 59.94 (except PAL version), but frames per in-game-second is 60.
 
 <dl>
  <dt><code>file</code>: str</dt>
