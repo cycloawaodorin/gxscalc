@@ -31,8 +31,8 @@ def _cross(on, off, *, std=5, rng=10, rf=False):
 			if rf:
 				fig = plt.figure()
 				ax = fig.add_subplot(xlabel='Speed [km/h]', ylabel='Acceleration [km/h/f]')
-				ax.plot(df0['speed'], df0['accel'], label='on')
-				ax.plot(df1['speed'], df1['accel'], label='off')
+				ax.plot(df1['speed'], df1['accel'], label='on')
+				ax.plot(df0['speed'], df0['accel'], label='off')
 				ax.grid()
 				ax.legend()
 				return (spd, acl, fig, ax)
