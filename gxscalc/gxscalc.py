@@ -38,6 +38,16 @@ def _cross(on, off, *, std=5, rng=10, rf=False):
 				return (spd, acl, fig, ax)
 			else:
 				return (spd, acl)
+	if rf:
+		fig = plt.figure()
+		ax = fig.add_subplot(xlabel='Speed [km/h]', ylabel='Acceleration [km/h/f]')
+		ax.plot(df1['speed'], df1['accel'], label='on')
+		ax.plot(df0['speed'], df0['accel'], label='off')
+		ax.grid()
+		ax.legend()
+		return (None, None, fig, ax)
+	else:
+		return (None, None)
 
 def _b1bd(b, th):
 	for i in range(len(b)-1):
