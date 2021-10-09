@@ -12,3 +12,6 @@
 
 ## 0.0.4 26.Jun.2021
 - Fix legend of `return_figure=True` for `gxscalc.mtp()`.
+
+## 0.0.5 10.Oct.2021
+- `gxscalc.mtp()` has been changed to return (None, None) when no cross points are detected.
