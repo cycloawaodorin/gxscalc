@@ -37,7 +37,7 @@ The accuracy compared to [Naegleria's spreadsheet](https://docs.google.com/sprea
  <dt><code>return_figure</code>: boolean</dt>
   <dd>If this is true, mtp() returns figure of speed vs moving averaged acceleration graph as optional output.</dd>
  <dt>returns: (float, float, [matplotlib.figure.Figure, matplotlib.axes.Axes])</dt>
-  <dd>Returns the tuple of (MT point [km/h], Acceleration at MT point [km/h/f]). If <code>return_figure</code> is <code>True</code>, returns (MT point, Acceleration at MT point, <code>Figure</code> of the graph, <code>Axes</code> of the graph) instead.</dd>
+  <dd>Returns the tuple of (MT point [km/h], Acceleration at MT point [km/h/f]). If <code>return_figure</code> is <code>True</code>, returns (MT point, Acceleration at MT point, <code>Figure</code> of the graph, <code>Axes</code> of the graph) instead. If no cross points are detected from the inputs, it returns (<code>None</code>, <code>None</code>) or (<code>None</code>, <code>None</code>, <code>Figure</code>, <code>Axes</code>) since the MT point can not be calculated.</dd>
 </dl>
 
 ### `gxscalc.distance(file, fps=60)`
