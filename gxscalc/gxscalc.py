@@ -15,11 +15,11 @@ def _intersection(x00, y00, x01, y01, x10, y10, x11, y11):
 	return (x, y)
 
 def _cross(on, off, *, std=5, rng=10, rf=False):
-	x = on[:-1].reset_index()['speed']
-	y = _mmean(on[1:].reset_index()['speed']-x, std, rng)
+	x = on.iloc[:-1, :].reset_index().loc[:, 'speed']
+	y = _mmean(on.iloc[1:, :].reset_index().loc[:, 'speed']-x, std, rng)
 	df1 = pd.DataFrame({'speed': x, 'accel': y})
-	x = off[:-1].reset_index()['speed']
-	y = _mmean(off[1:].reset_index()['speed']-x, std, rng)
+	x = off.iloc[:-1, :].reset_index().loc[:, 'speed']
+	y = _mmean(off.iloc[1:, :].reset_index().loc[:, 'speed']-x, std, rng)
 	df0 = pd.DataFrame({'speed': x, 'accel': y})
 	for i in range(len(df0)-1):
 		s0b, s0a = df0.loc[:, 'speed'].iloc[i], df0.loc[:, 'speed'].iloc[i+1]
